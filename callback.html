@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>Tesla 授权回调</title></head>
+<body style="font-family:sans-serif;padding:24px;max-width:640px;margin:auto">
+<h2>特斯拉授权已完成</h2>
+<p>请把下面这一整行网址复制下来，发给小南瓜（你的 Muse 助理）。这是最后一步授权凭证，时效很短，请尽快发。</p>
+<p id="url" style="word-break:break-all;background:#f2f2f2;padding:12px;border-radius:8px"></p>
+<button id="copy" style="font-size:17px;padding:10px 20px">复制这行网址</button>
+<p id="tip" style="color:#666"></p>
+<script>
+var u = window.location.href;
+document.getElementById('url').textContent = u;
+document.getElementById('copy').onclick = function () {
+  navigator.clipboard.writeText(u).then(function () {
+    document.getElementById('tip').textContent = '已复制，去粘贴发给小南瓜。';
+  });
+};
+if (u.indexOf('code=') === -1) {
+  document.getElementById('tip').textContent = '这个页面还没有收到授权码。如果你是直接打开的，请回到小南瓜给你的授权链接重新走一遍。';
+}
+</script>
+</body>
+</html>
